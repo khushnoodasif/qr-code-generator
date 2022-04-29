@@ -1,5 +1,6 @@
 import QRCode from 'qrcode'
 import { useState } from 'react'
+import logo from './logo.svg';
 
 function App() {
 	const [url, setUrl] = useState('')
@@ -10,7 +11,7 @@ function App() {
 			width: 800,
 			margin: 2,
 			color: {
-				dark: '#335383FF',
+				dark: '#0a192f',
 				light: '#EEEEEEFF'
 			}
 		}, (err, url) => {
@@ -23,16 +24,17 @@ function App() {
 
 	return (
 		<div className="app">
-			<h1>QR Generator</h1>
+			<img src={logo} className="App-logo" alt="QR CODE"/>
+			<h1>QR Code Generator</h1>
 			<input 
 				type="text"
-				placeholder="e.g. https://google.com"
+				placeholder="e.g. https://khushnooasif.com"
 				value={url}
 				onChange={e => setUrl(e.target.value)} />
 			<button onClick={GenerateQRCode}>Generate</button>
 			{qr && <>
 				<img src={qr} />
-				<a href={qr} download="qrcode.png">Download</a>
+				<a href={qr} download="qrcode.png">Download Now!</a>
 			</>}
 		</div>
 	)
